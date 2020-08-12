@@ -4,7 +4,7 @@ import {
   Observable,
   ReplaySubject,
 } from 'rxjs';
-import { flatMap, map, tap } from 'rxjs/operators';
+import { flatMap, map } from 'rxjs/operators';
 import { Component, Input } from '@angular/core';
 
 import { UserService } from '../../_services/user.service';
