@@ -1,0 +1,38 @@
+<!-- Ignore commented code, just to give context as to how cc-team-users is being used -->
+
+<!-- <div class="review-grid mt-20 mb-20 even">
+  <app-review-item-display-table
+    [type]="reviewItemDisplayTableType.TeamInfo"
+    [items]="publicTeamDetailsReviewItemsOb | async"
+    [teamId]="teamIdRS | async"
+  ></app-review-item-display-table>
+  <app-review-item-display-table
+    [type]="reviewItemDisplayTableType.TeamBilling"
+    [items]="billingDetailsReviewItemsOb | async"
+    [teamId]="teamIdRS | async"
+  ></app-review-item-display-table>
+</div>
+<div
+  *ngIf="(showTeamsWalletsOb | async) || (showTeamUsersOb | async)"
+  class="review-grid mt-20 mb-20"
+  [ngClass]="{ 'even': (showTeamsWalletsOb | async) && (showTeamUsersOb | async) }"
+>
+  <cc-teams-wallets
+    [supplierTeamId]="teamIdRS | async"
+    *ngIf="showTeamsWalletsOb | async"
+  ></cc-teams-wallets> -->
+<app-team-users [supplierTeamId]="supplierTeamIdRS | async" *ngIf="showTeamUsersOb | async"></app-team-users>
+<!-- </div>
+<div class="mt-20 mb-20">
+  <cc-team-suspension-panel [teamId]="teamIdRS | async"></cc-team-suspension-panel>
+</div>
+
+<div
+  class="mt-20 mb-20"
+  *ngIf="campaignTemplatesEnabled | async"
+>
+  <cc-team-campaign-templates
+    [teamId]="teamIdRS | async"
+    [retailerTeamId]="retailerTeamIdOb | async"
+  ></cc-team-campaign-templates>
+</div> -->
