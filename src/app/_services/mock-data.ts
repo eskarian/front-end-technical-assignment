@@ -1,5 +1,15 @@
 import { User, SUPPLIER_TEAM_ID } from '../utils';
 
+export function getMockLoggedInUser(): User {
+  return {
+    id: 'user-1',
+    email: 'user1@citrusad.com',
+    firstName: 'Bill',
+    lastName: 'Smith',
+    teamIds: [SUPPLIER_TEAM_ID],
+  };
+}
+
 export function getMockUsers(): User[] {
   return [
     {

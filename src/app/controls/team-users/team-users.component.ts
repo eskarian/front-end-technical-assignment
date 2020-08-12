@@ -24,7 +24,6 @@ const CITRUS_AD_EMAIL = '@citrusad.com';
 @Component({
   selector: 'app-team-users',
   templateUrl: './team-users.component.html',
-  providers: [UserService, TeamService],
   styleUrls: ['./team-users.component.less'],
 })
 export class TeamUsersComponent {

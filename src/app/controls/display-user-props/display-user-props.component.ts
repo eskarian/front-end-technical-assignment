@@ -14,7 +14,6 @@ import {
   User,
   IStore,
 } from './../../utils';
-import { TeamService } from '../../_services/team.service';
 
 export type UserProps = keyof User;
 
@@ -28,7 +27,6 @@ export type UserProps = keyof User;
       <span *ngIf="userPropsOb | async as userProps">{{ userProps }}</span>
     </app-chars-loading-placeholder>
   `,
-  providers: [TeamService],
 })
 export class DisplayUserPropsComponent {
   @Input() set userId(userId: string) {

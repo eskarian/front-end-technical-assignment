@@ -1,19 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { User, IStore, SUPPLIER_TEAM_ID } from '../utils';
-import { getMockUsers } from './mock-data';
 
-@Injectable()
+import { User, IStore } from '../utils';
+import { getMockUsers, getMockLoggedInUser } from './mock-data';
+
+@Injectable({
+  providedIn: 'root',
+})
 export class UserService {
   getLoggedInUserObservable(): Observable<User> {
-    return of({
-      id: 'user-1',
-      email: 'user1@citrusad.com',
-      namespace: 'app',
-      firstName: 'Bill',
-      lastName: 'Smith',
-      teamIds: [SUPPLIER_TEAM_ID],
-    });
+    return of(getMockLoggedInUser());
   }
 
   getUserByIdStoreOb(

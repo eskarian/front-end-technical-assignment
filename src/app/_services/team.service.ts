@@ -4,7 +4,9 @@ import { Observable, of } from 'rxjs';
 import { IStore, User } from '../utils';
 import { getMockUsers } from './mock-data';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class TeamService {
   getUsersForTeamStoreOb(teamId: string): Observable<IStore<User[]>> {
     return of({
