@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { User, IStore } from '../utils';
 import { getMockUsers, getMockLoggedInUser } from './mock-data';
 
+// All services are stubbed for sake of demo. No need to pay too much attention here.
 @Injectable({
   providedIn: 'root',
 })

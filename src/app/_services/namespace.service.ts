@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
+// All services are stubbed for sake of demo. No need to pay too much attention here.
 @Injectable({
   providedIn: 'root',
 })
