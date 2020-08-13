@@ -1,0 +1,2 @@
+<span *ngIf="(isLoadingOb | async) !== false" class="chars-loading-placeholder">{{ placeholderChars }}</span>
+<ng-content *ngIf="(isLoadingOb | async) == false"></ng-content>

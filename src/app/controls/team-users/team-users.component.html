@@ -1,0 +1,82 @@
+<div class="review-box team-users">
+  <ng-container>
+    <label class="review-title">Team Users</label>
+    <ng-container *ngIf="errorLoadingOb | async; else usersTable">
+      <p>Sorry, there was a problem retrieving the team users, please refresh and try again.</p>
+      <p>If the problem continues, please contact support.</p>
+    </ng-container>
+  </ng-container>
+</div>
+
+<ng-template #usersTable>
+  <table class="review-items-table">
+    <tbody>
+      <tr (click)="toggleShowUsers()" [ngClass]="{ 'header-row': collapsableBS.value }">
+        <td class="review-description" colspan="3">
+          <app-chars-loading-placeholder [storeOb]="usersStoreOb" noOfPlaceholderChars="11">
+            <b>Users ({{ numberOfUsersOb | async }})</b>
+          </app-chars-loading-placeholder>
+        </td>
+        <td class="caret-col" align="right">
+          <span *ngIf="showUserCollapseCaretOb | async" class="caret"
+                [ngClass]="{ 'caret-up': expandUsersBS.value }">&#9660;</span>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <hr [ngClass]="{ 'no-border': expandUsersBS.value }" />
+        </td>
+      </tr>
+
+      <ng-container *ngIf="isLoadingUsersOb | async; else usersBreakdown">
+        <tr>
+          <td colspan="2">
+            <app-chars-loading-placeholder [storeOb]="usersStoreOb" noOfPlaceholderChars="18">
+            </app-chars-loading-placeholder>
+          </td>
+          <td colspan="1" align="right">
+            <app-chars-loading-placeholder [storeOb]="usersStoreOb" noOfPlaceholderChars="6">
+            </app-chars-loading-placeholder>
+          </td>
+          <td></td>
+        </tr>
+      </ng-container>
+
+    </tbody>
+  </table>
+</ng-template>
+
+<ng-template #usersBreakdown>
+  <ng-container *ngIf="shouldShowUsersOb | async">
+    <ng-container *ngFor="let user of citrusFilteredUsersOb | async; let i = index">
+      <tr (click)="toggleShowUserDetails(i)">
+        <td class="review-description" colspan="3">
+          <app-display-user-props [userId]="user.id" [supplierTeamId]="supplierTeamIdRS | async"
+                                  [propNames]="['firstName', 'lastName']" [truncateCount]="45"></app-display-user-props>
+        </td>
+        <td class="caret-col" align="right">
+          <span *ngIf="collapsableBS.value" class="caret" [ngClass]="{ 'caret-up': showUserDetails[i] }">&#9660;</span>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <hr [ngClass]="{ 'no-border': showUserDetails[i] }" />
+        </td>
+      </tr>
+      <ng-container *ngIf="showUserDetails[i] || !collapsableBS.value">
+        <tr>
+          <td class="review-description pl-20" colspan="3">
+            Email
+            <app-display-user-props style="float:right;" [userId]="user.id" [supplierTeamId]="supplierTeamIdRS | async"
+                                    [propNames]="['email']" [truncateCount]="45"></app-display-user-props>
+          </td>
+        </tr>
+        <tr>
+          <td class="pl-20" colspan="4">
+            <hr />
+          </td>
+        </tr>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</ng-template>

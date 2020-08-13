@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { SUPPLIER_TEAM_ID } from './utils';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
+  styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
-  title = 'citrus-tech-demo';
+  supplierTeamId = SUPPLIER_TEAM_ID;
 }

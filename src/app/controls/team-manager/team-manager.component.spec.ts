@@ -1,25 +1,22 @@
+import { SUPPLIER_TEAM_ID } from './../../utils';
+import { CitrusNamespaceService } from './../../_services/namespace.service';
+import { UserService } from './../../_services/user.service';
+import { TeamService } from './../../_services/team.service';
 import { of } from 'rxjs';
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { TeamManagerComponent } from './team-manager.component';
+import { TeamUsersComponent } from '../team-users/team-users.component';
+import { CharsLoadingPlaceholderComponent } from '../chars-loading-placeholder/chars-loading-placeholder.component';
+import { DisplayUserPropsComponent } from '../display-user-props/display-user-props.component';
+import { getMockUsers, getMockLoggedInUser } from 'src/app/_services/mock-data';
 
-import { AppComponent } from './app.component';
-import { TeamManagerComponent } from './controls/team-manager/team-manager.component';
-import { TeamUsersComponent } from './controls/team-users/team-users.component';
-import { CharsLoadingPlaceholderComponent } from './controls/chars-loading-placeholder/chars-loading-placeholder.component';
-import { DisplayUserPropsComponent } from './controls/display-user-props/display-user-props.component';
-import { SUPPLIER_TEAM_ID } from './utils';
-import { TeamService } from './_services/team.service';
-import { getMockUsers, getMockLoggedInUser } from './_services/mock-data';
-import { UserService } from './_services/user.service';
-import { CitrusNamespaceService } from './_services/namespace.service';
-
-describe('AppComponent', () => {
-  let component: AppComponent;
-  let fixture: ComponentFixture<AppComponent>;
+describe('TeamManagerComponent', () => {
+  let component: TeamManagerComponent;
+  let fixture: ComponentFixture<TeamManagerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent,
         TeamManagerComponent,
         TeamUsersComponent,
         CharsLoadingPlaceholderComponent,
@@ -67,7 +64,7 @@ describe('AppComponent', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AppComponent);
+    fixture = TestBed.createComponent(TeamManagerComponent);
     component = fixture.componentInstance;
 
     component.supplierTeamId = SUPPLIER_TEAM_ID;
