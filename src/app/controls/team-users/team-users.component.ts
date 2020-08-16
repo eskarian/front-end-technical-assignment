@@ -1,26 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { distinctUntilChanged, first, flatMap, map } from 'rxjs/operators';
-import {
-  BehaviorSubject,
-  combineLatest,
-  Observable,
-  ReplaySubject,
-} from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, ReplaySubject, } from 'rxjs';
 
 import { TeamService } from './../../_services/team.service';
 import { UserService } from './../../_services/user.service';
-import {
-  storeFilterNotLoading,
-  storeMapToValue,
-  storeMapEmptyValueToEmptyArray,
-  shareReplayWithRefCount,
-  storeMapToLoading,
-  User,
-  IStore,
-} from './../../utils';
+import { storeFilterNotLoading, storeMapToValue, storeMapEmptyValueToEmptyArray, shareReplayWithRefCount, storeMapToLoading, User, IStore, } from './../../utils';
 
+export type UserProps = keyof User;
 const CITRUS_AD_EMAIL = '@citrusad.com';
-
 @Component({
   selector: 'app-team-users',
   templateUrl: './team-users.component.html',
@@ -114,7 +101,7 @@ export class TeamUsersComponent {
       return numberOfUsers > 0 && (expandUsers || !collapsable);
     })
   );
-
+  showTable: boolean = true;
   constructor(
     private teamService: TeamService,
     private userService: UserService
@@ -142,5 +129,16 @@ export class TeamUsersComponent {
     if (this.collapsableBS.value) {
       this.showUserDetails[index] = !this.showUserDetails[index];
     }
+  }
+  getUsersText(list: User[]) {
+    return `Users${list ? ' (' + list.length + ')' : ''}`;
+  }
+
+  toggleView() {
+    this.showTable = !this.showTable;
+  }
+
+  userPropsText(propNames: UserProps[], user: User) {
+    return propNames.reduce((prev, p) => prev + `${user[p]} `, '').trim();
   }
 }

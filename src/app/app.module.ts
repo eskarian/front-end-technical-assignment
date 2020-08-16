@@ -2,6 +2,7 @@ import { TeamManagerComponent } from './controls/team-manager/team-manager.compo
 import { DisplayUserPropsComponent } from './controls/display-user-props/display-user-props.component';
 import { CharsLoadingPlaceholderComponent } from './controls/chars-loading-placeholder/chars-loading-placeholder.component';
 import { TeamUsersComponent } from './controls/team-users/team-users.component';
+import { CollapsableItemComponent } from './controls/collapsable-item/collapsable-item.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -14,6 +15,7 @@ import { AppComponent } from './app.component';
     CharsLoadingPlaceholderComponent,
     DisplayUserPropsComponent,
     TeamManagerComponent,
+    CollapsableItemComponent,
   ],
   exports: [TeamUsersComponent, CharsLoadingPlaceholderComponent],
   imports: [BrowserModule],

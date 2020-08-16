@@ -1,11 +1,25 @@
 <div class="review-box team-users">
-  <ng-container>
-    <label class="review-title">Team Users</label>
-    <ng-container *ngIf="errorLoadingOb | async; else usersTable">
-      <p>Sorry, there was a problem retrieving the team users, please refresh and try again.</p>
-      <p>If the problem continues, please contact support.</p>
+  <label class="review-title">Team Users</label>
+  <button (click)="toggleView()">{{!showTable ? 'Show Table' : 'Show Component'}}</button>
+  <ng-container *ngIf="!showTable; else usersTable">
+
+    <ng-container *ngIf="citrusFilteredUsersOb | async as users">
+      <collapsable-item [text]="getUsersText(users)"
+        [isBold]="true">
+        <collapsable-item *ngFor="let user of users; trackBy:user?.id"
+          [text]="user.firstName + ' ' + user.lastName">
+          <collapsable-item [text]="'Email'"
+            [textData]="userPropsText(['email'], user)"></collapsable-item>
+        </collapsable-item>
+      </collapsable-item>
     </ng-container>
+
   </ng-container>
+  <!-- commented out for now to allow for the button to swap between original and my way
+  <ng-container *ngIf="errorLoadingOb | async; else users">
+    <p>Sorry, there was a problem retrieving the team users, please refresh and try again.</p>
+    <p>If the problem continues, please contact support.</p>
+  </ng-container> -->
 </div>
 
 <ng-template #usersTable>

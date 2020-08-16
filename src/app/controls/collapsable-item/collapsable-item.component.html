@@ -1,0 +1,12 @@
+<div class="collapsable" [ngClass]="{ 'expanded': expanded }">
+  <div class="item" (click)="toggleExpand()">
+    <span [ngClass]="{ 'bold': isBold }">{{ _text }}</span>
+    <span *ngIf="!textData; else showData" class="caret"
+      [ngClass]="{ 'caret-up': expanded }"></span>
+  </div>
+  <ng-content></ng-content>
+</div>
+
+<ng-template #showData>
+  <span>{{ textData }}</span>
+</ng-template>
